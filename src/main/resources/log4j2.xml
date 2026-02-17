@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <RollingFile name="AppFile"
+                     fileName="logs/task-manager.log"
+                     filePattern="logs/task-manager-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <!--  TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
+
+    <Loggers>
+        <Logger name="org.example" level="DEBUG" additivity="false">
+            <AppenderRef ref="AppFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+    
+</Configuration>
