@@ -1,6 +1,4 @@
-# Proyecto Integrador – Sistema de Gestión de
-
-# Tareas
+# Proyecto Integrador – Sistema de Gestión de Tareas
 
 ## Descripción general
 
